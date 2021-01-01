@@ -1,9 +1,9 @@
-package fr.musicplayer.celeria.panels.includes;
+package fr.celeria.musicplayer.panels.includes;
 
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
-import fr.musicplayer.celeria.panels.util.Panel;
-import fr.musicplayer.celeria.panels.util.PanelManager;
+import fr.celeria.musicplayer.panels.util.Panel;
+import fr.celeria.musicplayer.panels.util.PanelManager;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
@@ -13,10 +13,9 @@ import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class TopPanel extends Panel {
-
+public class TopPanel extends Panel
+{
     private GridPane topBar;
-
 
     @Override
     public void init(PanelManager panelManager) {
@@ -49,8 +48,6 @@ public class TopPanel extends Panel {
         titleLabel.setFont(new Font(18));
         this.topBar.getChildren().add(titleLabel);
 
-
-
         GridPane topBarButton = new GridPane();
         this.layout.getChildren().add(topBarButton);
 
@@ -60,15 +57,16 @@ public class TopPanel extends Panel {
         topBarButton.setMaxHeight(50.0d);
 
         GridPane.setHalignment(topBarButton, HPos.RIGHT);
-        MaterialDesignIconView close = new MaterialDesignIconView(MaterialDesignIcon.WINDOW_CLOSE);
-        MaterialDesignIconView maximize = new MaterialDesignIconView(MaterialDesignIcon.WINDOW_MAXIMIZE);
-        MaterialDesignIconView hide = new MaterialDesignIconView(MaterialDesignIcon.WINDOW_MINIMIZE);
+
+        final MaterialDesignIconView close = new MaterialDesignIconView(MaterialDesignIcon.WINDOW_CLOSE);
+        final MaterialDesignIconView maximize = new MaterialDesignIconView(MaterialDesignIcon.WINDOW_MAXIMIZE);
+        final MaterialDesignIconView hide = new MaterialDesignIconView(MaterialDesignIcon.WINDOW_MINIMIZE);
+
         GridPane.setHgrow(topBarButton, Priority.ALWAYS);
         GridPane.setVgrow(topBarButton, Priority.ALWAYS);
         GridPane.setVgrow(close, Priority.ALWAYS);
         GridPane.setVgrow(maximize, Priority.ALWAYS);
         GridPane.setVgrow(hide, Priority.ALWAYS);
-
 
         close.setFill(Color.WHITE);
         close.setOpacity(0.70f);
@@ -93,7 +91,6 @@ public class TopPanel extends Panel {
         hide.setOnMouseExited(e -> hide.setOpacity(0.70f));
         hide.setOnMouseClicked(e -> this.panelManager.getStage().setIconified(true));
         hide.setTranslateX(18.0d);
-
 
         topBarButton.getChildren().addAll(close, maximize, hide);
     }

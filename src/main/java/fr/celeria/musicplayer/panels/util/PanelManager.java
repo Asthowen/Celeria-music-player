@@ -1,8 +1,8 @@
-package fr.musicplayer.celeria.panels.util;
+package fr.celeria.musicplayer.panels.util;
 
-import fr.musicplayer.celeria.panels.includes.BottomPanel;
-import fr.musicplayer.celeria.panels.includes.LeftPanel;
-import fr.musicplayer.celeria.panels.includes.TopPanel;
+import fr.celeria.musicplayer.panels.includes.BottomPanel;
+import fr.celeria.musicplayer.panels.includes.LeftPanel;
+import fr.celeria.musicplayer.panels.includes.TopPanel;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -24,7 +24,6 @@ public class PanelManager {
     private GridPane centerPanel = new GridPane();
     public Image icon = new Image(PanelManager.class.getResource("/image/logo.png").toExternalForm());
 
-
     public PanelManager(Stage stage) {
         this.stage = stage;
     }
@@ -44,7 +43,7 @@ public class PanelManager {
 
         this.stage.getIcons().add(this.icon);
 
-        this.layout.setStyle("-fx-background-image: url('" + getClass().getResource("/image/main.png") + "');-fx-backgound-repeat: skretch;-fx-backgound-position: center center;-fx-background-size: cover;");
+        this.layout.setStyle("-fx-background-image: url('" + this.getClass().getResource("/image/main.png") + "'); -fx-backgound-repeat: skretch; -fx-backgound-position: center center; -fx-background-size: cover;");
 
         RowConstraints leftPanelConstraints = new RowConstraints();
         leftPanelConstraints.setValignment(VPos.TOP);
@@ -60,7 +59,6 @@ public class PanelManager {
         this.layout.add(this.topPanel.getLayout(), 0, 0);
         this.topPanel.init(this);
 
-
         this.layout.add(this.centerPanel, 0, 1);
         GridPane.setVgrow(this.centerPanel, Priority.ALWAYS);
         GridPane.setHgrow(this.centerPanel, Priority.ALWAYS);
@@ -71,14 +69,8 @@ public class PanelManager {
         this.layout.add(this.bottomPanel.getLayout(), 0, 2);
         this.bottomPanel.init(this);
 
-
-
-
-
         ResizeHelper.addResizeListener(this.stage);
     }
-
-
 
     public Stage getStage() {
         return stage;
@@ -89,5 +81,10 @@ public class PanelManager {
         this.centerPanel.getChildren().add(panel.getLayout());
         panel.init(this);
         panel.onShow();
+    }
+
+    public BottomPanel getBottomPanel()
+    {
+        return this.bottomPanel;
     }
 }
